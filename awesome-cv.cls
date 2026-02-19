@@ -314,6 +314,10 @@
 % Usage: \twitter{<twitter handle>}
 \newcommand*{\twitter}[1]{\def\@twitter{#1}}
 
+% Defines writer's youtube (optional)
+% Usage: \youtube{<youtube-channel-id>}
+\newcommand*{\youtube}[1]{\def\@youtube{#1}}
+
 % Defines writer's Mastodon (optional)
 % Usage: \mastodon{<instance>}{<mastodon-nick>}
 \newcommand*{\mastodon}[2]{\def\@mastodoninstance{#1}\def\@mastodonname{#2}}
@@ -548,6 +552,12 @@
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{https://twitter.com/\@twitter}{\faTwitter\acvHeaderIconSep\@twitter}%
+        }%
+      \ifthenelse{\isundefined{\@youtube}}%
+        {}%
+        {%
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+          \href{https://www.youtube.com/@\@youtube}{\faYoutube\acvHeaderIconSep\@youtube}%
         }%
       \ifthenelse{\isundefined{\@mastodonname}}%
         {}%
